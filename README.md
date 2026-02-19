@@ -76,11 +76,12 @@ If I had more time, I would consider the following:
 
 ## Project Structure
 
+```text
 aimonk-multilabel-classification/
 │
 ├── dataset/
-│ ├── images/
-│ └── labels.txt
+│   ├── images/
+│   └── labels.txt
 │
 ├── dataset.py
 ├── model.py
@@ -90,32 +91,35 @@ aimonk-multilabel-classification/
 ├── training_loss.png
 ├── README.md
 └── requirements.txt
-
-
----
+```
 
 ## How to Run
 
 ### 1. Install Dependencies
 ```bash
 pip install -r requirements.txt
-2. Train the Model
+```
+
+### 2. Train the Model
+```bash
 python train.py
+```
 This will:
+- Train the multilabel classification model
+- Save the trained model as `multilabel_resnet18.pth`
+- Save the training loss plot as `training_loss.png`
 
-Train the multilabel classification model
+### 3. Run Inference
+Edit the image path inside `inference.py` if required, then run:
 
-Save the trained model as multilabel_resnet18.pth
-
-Save the training loss plot as training_loss.png
-
-3. Run Inference
-Edit the image path inside inference.py if required, then run:
-
+```bash
 python inference.py
-Example output:
+```
 
+**Example output:**
+```text
 Attributes present: ['Attr1', 'Attr2', 'Attr4']
+```
 ### Notes
 - Training was performed on CPU due to environment constraints; given the dataset size, this does not impact model correctness.
 - Deprecated torchvision warnings do not affect functionality.
