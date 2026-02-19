@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# IDEs
+.vscode/
+.idea/
+
+# Dataset (Optional: Uncomment if you don't want to upload images)
+# dataset/
+
+# Model weights (Optional: Uncomment if you want to skip uploading large weights)
+# *.pth

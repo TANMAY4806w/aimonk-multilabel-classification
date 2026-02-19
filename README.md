@@ -116,22 +116,17 @@ python inference.py
 Example output:
 
 Attributes present: ['Attr1', 'Attr2', 'Attr4']
-Notes
-Training was performed on CPU due to environment constraints; given the dataset size, this does not impact model correctness.
+### Notes
+- Training was performed on CPU due to environment constraints; given the dataset size, this does not impact model correctness.
+- Deprecated torchvision warnings do not affect functionality.
+- I focused on robustness, correctness, and clean implementation.
 
-Deprecated torchvision warnings do not affect functionality.
-
-I focused on robustness, correctness, and clean implementation.
-
-Conclusion
+## Conclusion
 In this project, I successfully demonstrated:
-- End-to-end multilabel image classification
+- **End-to-end multilabel image classification**
+- **Proper handling of missing labels and missing images**
+- **Clean and modular PyTorch-based implementation**
+- **Successful training and inference workflow**
 
-Proper handling of missing labels and missing images
-
-Clean and modular PyTorch-based implementation
-
-Successful training and inference workflow
-
-Author
-Tanmay Patil
+## Author
+**Tanmay Patil**
