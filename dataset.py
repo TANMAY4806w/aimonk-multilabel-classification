@@ -35,6 +35,26 @@ class MultiLabelDataset(Dataset):
     def __len__(self):
         return len(self.samples)
 
+    def calculate_pos_weights(self):
+        """
+        Calculates positive weights for each class based on the ratio of negative to positive samples.
+        pos_weight = (num_neg / num_pos)
+        """
+        all_labels = []
+        for _, labels, _ in self.samples:
+            all_labels.append(labels)
+        
+        all_labels = torch.tensor(all_labels, dtype=torch.float32)
+        
+        # Calculate positive and negative counts for each class
+        num_pos = all_labels.sum(dim=0)
+        num_neg = len(all_labels) - num_pos
+        
+        # Calculate weights: avoid division by zero
+        pos_weights = num_neg / (num_pos + 1e-6)
+        
+        return pos_weights
+
     def __getitem__(self, idx):
         img_path, labels, mask = self.samples[idx]
 

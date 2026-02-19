@@ -51,7 +51,11 @@ def train():
     # -----------------------
     # Loss & Optimizer
     # -----------------------
-    criterion = nn.BCEWithLogitsLoss(reduction="none")
+    # Calculate class weights for imbalance handling
+    pos_weights = dataset.calculate_pos_weights().to(device)
+    print(f"Using positive weights: {pos_weights}")
+
+    criterion = nn.BCEWithLogitsLoss(pos_weight=pos_weights, reduction="none")
     optimizer = torch.optim.Adam(model.parameters(), lr=1e-4)
 
     # -----------------------

@@ -4,7 +4,7 @@
 This project is part of the **Machine Learning Intern assignment for AIMonk Labs**.  
 The goal is to build a **multilabel image classification system** using a pretrained deep learning model, while handling real-world dataset issues such as missing labels and missing images.
 
-The solution is implemented using **PyTorch** and follows a clean, modular, and easy-to-understand structure.
+I implemented the solution using **PyTorch**, following a clean, modular, and easy-to-understand structure.
 
 ---
 
@@ -34,6 +34,11 @@ Build a robust multilabel classification pipeline that:
 - Used **BCEWithLogitsLoss**
 - Applied a **mask** to ignore missing (NA) labels during loss computation
 
+### Handling Class Imbalance
+- **Positive Weighting (pos_weight):**
+  - Calculated the ratio of negative to positive samples for each class.
+  - Used these weights in `BCEWithLogitsLoss` to penalize the model more for misclassifying underrepresented classes.
+
 ### Handling Missing Data
 - **Missing labels (NA):**
   - Masked during loss calculation so they do not affect training
@@ -49,6 +54,23 @@ Build a robust multilabel classification pipeline that:
 ### Visualization
 - Training loss curve saved as `training_loss.png`
 - The curve shows a decreasing trend, indicating stable learning
+
+### Future Improvements / Pre-processing Thoughts
+If I had more time, I would consider the following:
+
+1.  **Advanced Imbalance Techniques:**
+    -   **Focal Loss:** To focus training on hard-to-classify examples.
+    -   **Oversampling/Undersampling:** To balance the dataset distribution directly in the dataloader.
+
+2.  **Data Augmentation:**
+    -   Implement more aggressive augmentations like `RandomRotation`, `ColorJitter`, and `Cutout` to improve generalization.
+
+3.  **Hyperparameter Tuning:**
+    -   Use a scheduler (e.g., `ReduceLROnPlateau`) to adjust learning rate dynamically.
+    -   Experiment with different batch sizes and optimizers (e.g., SGD with momentum).
+
+4.  **Model Architecture:**
+    -   Try deeper networks like ResNet50 or different architectures like EfficientNet for potentially better feature extraction.
 
 ---
 
@@ -99,12 +121,11 @@ Training was performed on CPU due to environment constraints; given the dataset 
 
 Deprecated torchvision warnings do not affect functionality.
 
-The focus of this project is robustness, correctness, and clean implementation.
+I focused on robustness, correctness, and clean implementation.
 
 Conclusion
-This project demonstrates:
-
-End-to-end multilabel image classification
+In this project, I successfully demonstrated:
+- End-to-end multilabel image classification
 
 Proper handling of missing labels and missing images
 
